@@ -3,30 +3,30 @@ package com.maxfedorov.dockerhub.drivers;
 import org.openqa.selenium.WebDriver;
 
 public class DriverFactory {
-    private static WebDriver driver = null;
+    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-    public static synchronized WebDriver getDriver() {
-        if (driver != null) {
-            return driver;
+    public static WebDriver getDriver() {
+        if (driver.get() != null) {
+            return driver.get();
         }
         if (System.getProperty("driver") == null) {
             System.setProperty("driver", "local");
         }
         switch (System.getProperty("driver")) {
             case "local":
-                driver = new LocalDriver().getDriver();
+                driver.set(new LocalDriver().getDriver());
                 break;
             case "selenoid":
-                driver = new SelenoidDriver().getDriver();
+                driver.set(new SelenoidDriver().getDriver());
                 break;
             default:
                 throw new RuntimeException("Use only driver: local, selenoid");
         }
-        return driver;
+        return driver.get();
     }
 
     public static void closeBrowser() {
-        driver.quit();
-        driver = null;
+        driver.get().quit();
+        driver.remove();
     }
 }
