@@ -16,6 +16,7 @@ public interface DriverConfig extends Config {
     boolean enableVideo();
 
     @Key("selenoid.url")
+    @DefaultValue("http://localhost:4444/wd/hub/")
     URL selenoidUrl();
 
     @Key("browser.name")
@@ -27,6 +28,7 @@ public interface DriverConfig extends Config {
     String browserVersion();
 
     @Key("video.url")
+    @DefaultValue("http://localhost:4444/video/")
     String videoUrl();
 
     @Key("driverPath")

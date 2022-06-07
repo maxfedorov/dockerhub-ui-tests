@@ -11,4 +11,4 @@ Feature: Explore page
     Examples:
       | image  | desc                  |
       | alpine | What is Alpine Linux? |
-      | ubuntu | What is Ubuntuuuu?       |
+      | ubuntu | What is Ubuntu?       |
