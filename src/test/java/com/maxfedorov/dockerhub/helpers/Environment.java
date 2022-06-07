@@ -27,6 +27,6 @@ public class Environment implements BeforeEachCallback, AfterEachCallback {
                 new AttachmentHelper(driver).attachVideo(((RemoteWebDriver) driver).getSessionId().toString());
             }
         }
-        driver.quit();
+        DriverFactory.closeBrowser();
     }
 }

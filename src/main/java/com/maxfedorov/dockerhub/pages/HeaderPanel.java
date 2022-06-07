@@ -24,7 +24,7 @@ public class HeaderPanel extends PageBase {
         return fields.size() > 0 && fields.get(0).isDisplayed();
     }
 
-    private final By searchField = cssSelector(".autocompleteSearchWrapper input");
+    private final By searchField = cssSelector("input[name='q']");
     private final String searchResult = ".//*[contains(@class, 'autocompleteMenu')]//span[@data-testid='autocomplete-result']/parent::span[normalize-space()='%s']";
 
     @Step("Type {search} in search field")

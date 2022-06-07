@@ -10,6 +10,12 @@ allure {
     }
 }
 
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
 group 'org.example'
 version '1.0-SNAPSHOT'
 
@@ -22,6 +28,7 @@ dependencies {
     implementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     implementation 'org.aeonbits.owner:owner:1.0.4'
     testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.2'
+    testImplementation 'io.cucumber:cucumber-java:7.0.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
     testCompile("org.assertj:assertj-core:3.11.1")
     compile 'org.seleniumhq.selenium:selenium-java:4.2.0'
@@ -38,4 +45,15 @@ task testSelenoid(type: Test) {
     useJUnitPlatform()
     systemProperties(System.getProperties())
     systemProperty "driver", "selenoid"
+}
+
+task cucumber() {
+    dependsOn assemble, testClasses
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--plugin', 'pretty', '--glue', '', 'src/test/resources']
+        }
+    }
 }
