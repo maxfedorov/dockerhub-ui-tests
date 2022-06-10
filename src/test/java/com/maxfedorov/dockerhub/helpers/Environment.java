@@ -16,7 +16,7 @@ public class Environment implements BeforeEachCallback, AfterEachCallback {
 
     @Override
     public void beforeEach(ExtensionContext context) {
-        driver = new DriverFactory().getDriver();
+        driver = DriverFactory.getDriver();
     }
 
     @Override

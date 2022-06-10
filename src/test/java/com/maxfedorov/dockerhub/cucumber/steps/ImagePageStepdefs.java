@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ImagePageStepdefs {
-    WebDriver driver = new DriverFactory().getDriver();
+    WebDriver driver = DriverFactory.getDriver();
     ImagePage page = new ImagePage(driver);
 
     @Then("the user verifies that image page is open")
