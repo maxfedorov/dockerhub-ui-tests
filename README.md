@@ -6,6 +6,7 @@
 
 ##### Run JUnit tests:
 `./gradlew test` - local run
+
 `./gradlew testSelenoid` - selenoid run
 
 ##### Open JUnit tests Allure report:
