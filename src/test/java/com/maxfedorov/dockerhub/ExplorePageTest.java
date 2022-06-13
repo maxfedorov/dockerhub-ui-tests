@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.maxfedorov.dockerhub.helpers.Environment;
 import com.maxfedorov.dockerhub.pages.ExplorePage;
 import com.maxfedorov.dockerhub.pages.ImagePage;
+import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.assertj.core.api.Assertions;
@@ -14,7 +15,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.openqa.selenium.WebDriver;
 
-@DisplayName("UI tests")
+@Epic("Dockerhub")
+@Story("UI tests")
+@Feature("Explore page")
 public class ExplorePageTest {
 
     private WebDriver driver;
@@ -29,8 +32,6 @@ public class ExplorePageTest {
     }
 
     @Test
-    @Feature("UI tests")
-    @Story("Explore Page")
     @DisplayName("Open image")
     void openImageTest() {
         ExplorePage page = new ExplorePage(driver);
@@ -46,8 +47,6 @@ public class ExplorePageTest {
     }
 
     @Test
-    @Feature("UI tests")
-    @Story("Explore Page")
     @DisplayName("Click image label")
     void clickImageLabelTest() {
         ExplorePage page = new ExplorePage(driver);
@@ -57,8 +56,6 @@ public class ExplorePageTest {
     }
 
     @Test
-    @Feature("UI tests")
-    @Story("Explore Page")
     @DisplayName("Select filter")
     void selectFilterTest() {
         ExplorePage page = new ExplorePage(driver);
@@ -69,8 +66,6 @@ public class ExplorePageTest {
     }
 
     @Test
-    @Feature("UI tests")
-    @Story("Explore Page")
     @DisplayName("Sort images")
     void sortImagesTest() {
         ExplorePage page = new ExplorePage(driver);

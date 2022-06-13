@@ -5,6 +5,7 @@ import com.maxfedorov.dockerhub.pages.ExplorePage;
 import com.maxfedorov.dockerhub.pages.HeaderPanel;
 import com.maxfedorov.dockerhub.pages.ImagePage;
 import com.maxfedorov.dockerhub.pages.MainPage;
+import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.assertj.core.api.SoftAssertions;
@@ -19,7 +20,9 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.stream.Stream;
 
-@DisplayName("UI tests")
+@Epic("Dockerhub")
+@Story("UI tests")
+@Feature("Header panel")
 public class HeaderPanelTest {
 
     private WebDriver driver;
@@ -34,8 +37,6 @@ public class HeaderPanelTest {
     }
 
     @ParameterizedTest(name = "Search image {0}")
-    @Feature("UI tests")
-    @Story("Header Panel")
     @MethodSource("provideImages")
     void searchTest(String search, String image, boolean isOfficial) {
         new HeaderPanel(driver).search(search)
@@ -50,8 +51,6 @@ public class HeaderPanelTest {
     }
 
     @Test
-    @Feature("UI tests")
-    @Story("Header Panel")
     @DisplayName("Search with selection test result")
     void searchWithSelectionResultTest() {
         HeaderPanel headerPanel = new HeaderPanel(driver);
